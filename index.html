@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title></title>
+	<script src="agent.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+
+		var a = new Agent("Agente A", [[20,15],[24,30]]);
+		var b = new Agent("Agente B", [[12,20],[19,10]]);
+		var inNegotiation = true;
+		var flag = true;
+
+		console.log(a);
+		console.log(b);
+		console.log("------------");
+		console.log();
+
+		while(inNegotiation){
+			var evaluation;
+			if (flag){
+				var aOffer = a.makeOffer();
+				evaluation = b.evaluateOffer(aOffer);
+			} else {
+				evaluation = a.evaluateOffer(b.makeOffer());
+			}
+			console.log(evaluation);
+			if (evaluation.acepted){
+				inNegotiation = false;
+			}
+			if (flag){
+				flag = false;
+			} else {
+				flag = true;
+			}
+
+
+		}
+		
+		
+
+		//a1.sumar(a2, 0);
+
+	</script>
+</body>
+</html>
